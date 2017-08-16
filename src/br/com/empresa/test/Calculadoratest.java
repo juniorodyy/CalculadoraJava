@@ -7,25 +7,52 @@ import org.junit.Test;
 
 import br.com.empresa.lib.Calculadora;
 
-
-public class Calculadoratest{
+public class Calculadoratest {
 	private Calculadora calculadora;
+
 	@Before
-	
-	public void before() {
+	public void before() { 
 		calculadora = new Calculadora();
 	}
+	
 	@Test
 	public void somaNumerosInteiros() {
 		calculadora.Somar(3);
 		assertEquals(calculadora.getResultado(), 3, 0);
 		calculadora.Somar(7);
 		assertEquals(calculadora.getResultado(), 10, 0);
-	
 	}
+
 	@Test
 	public void somaNumerosComVirgula() {
 		calculadora.Somar(2.33);
-		assertEquals(calculadora.getResultado(), 2.33, 0);
+		assertEquals(calculadora.getResultado(), 2.33, 0); 
 	}
+	
+	@Test
+	public void criaCalculadoraComValorInicial() {
+		calculadora = new Calculadora(10);
+		assertEquals(calculadora.getResultado(), 10, 0);
+		calculadora.Somar(3);
+		assertEquals(calculadora.getResultado(), 13, 0); 
+	}	
+	@Test
+	public void somaValorEDivide() {
+		calculadora.Somar(20);
+		calculadora.Dividir(2);
+		assertEquals(calculadora.getResultado(),10,0);
+	}
+	@Test
+	public void criaCalculadoraComValorESubtrai(){
+		calculadora = new Calculadora(10);
+		calculadora.Subtrair(5);
+		assertEquals(calculadora.getResultado(), 5, 0);
+	}
+	@Test
+	public void criaCalculadoraComValorEMultipliquei(){
+		calculadora = new Calculadora (10);
+		calculadora.Multiplicar(5);
+		assertEquals(calculadora.getResultado(), 50, 0);
+	}
+	
 }
